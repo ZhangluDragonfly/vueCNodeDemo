@@ -1,6 +1,6 @@
 <template>
   <div class="listWrapper">
-    <el-row v-for="item in tableData" :key="item.id">
+    <el-row v-for="item in tableData" :key="item.id" class='listItem'>
       <el-col :xs="5" :sm="3" :md="3" :lg="2">
         <div><img :src='item.author.avatar_url' :title='item.author.loginname' class='authorImg'></div>
       </el-col>
@@ -11,7 +11,9 @@
         <div :class="{'tabIsTop': item.top, 'tabIsGood': item.good}" class="tab">{{item.tab | formatTab(item.top, item.good)}}</div>
       </el-col>
       <el-col :xs="9" :sm="11" :md="12" :lg="12">
-        <div>{{item.title}}</div>
+        <div>
+        <router-link :to='{name:"ArticlePage",params:{id:item.id}}'>{{item.title}}</router-link>
+        </div>
       </el-col>
       <el-col :xs="5" :sm="5" :md="5" :lg="6" class="createTime">
         <div>{{item.create_at | formatTime}}</div>
@@ -110,21 +112,18 @@ export default {
 </script>
 
 <style>
-body {
-  font-family: Helvetica, sans-serif;
-}
 
 .listWrapper {
   margin: 20px 10%;
 }
 
-.el-row {
+.el-row.listItem {
     border-bottom: 1px solid #ccc;
     height: 60px;
     overflow: hidden;
 }
 
-.el-col{
+.el-row.listItem .el-col{
     height: 60px;
     text-align: center;
     line-height: 60px;
