@@ -115,6 +115,7 @@ export default {
 
 .listWrapper {
   margin: 20px 10%;
+  background-color: white;
 }
 
 .el-row.listItem {

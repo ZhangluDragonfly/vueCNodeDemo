@@ -25,5 +25,6 @@ body {
   font-family: Helvetica, sans-serif;
   padding: 0 0 0 0;
   margin: 0 0 0 0;
+  background-color: #eee;
 }
 </style>
