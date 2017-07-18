@@ -1,5 +1,5 @@
 <template>
-  <div id="articlePage"> 
+  <div id="articlePage">
   	<el-row type="flex" class="row-bg" justify="center">
     <el-col :span="16">
       <div class="articleSec">
@@ -46,7 +46,8 @@
 
 <script>
 import axios from 'axios'
-import userCom from './userCom.vue'
+import userCom from './userCom'
+import {formatTime} from '~/helpers/filters'
 export default {
   name: 'ArticlePage',
 
@@ -73,7 +74,7 @@ export default {
     var me = this;
       axios.get('https://cnodejs.org/api/v1' + me.$route.fullPath, {
         params: {
-          
+
         }
       })
       .then(function (response) {
@@ -86,42 +87,11 @@ export default {
   },
 
   filters: {
-    formatTime(value){
-      var year, month, date, hour, minute;
-
-      var a = value.split('T');
-      var b = a[0].split('-');
-      year = +b[0];
-      month = +b[1];
-      date = +b[2];
-
-      var c;
-      if(a[1]) {
-        c = a[1].split(':');
-        hour = +c[0];
-        minute = +c[1];
-      }
-      
-      var now = new Date();
-
-      if(year < now.getFullYear()){
-        return (now.getFullYear()-year) + '年前' ;
-      } else if(month < now.getMonth()+1) {
-        return (now.getMonth()+1 - month) + '月前';
-      } else if(date < now.getDate()) {
-        return (now.getDate() - date) + '天前';
-      } else if(hour < now.getHours()) {
-        return (now.getHours() - hour) + '小时前';
-      } else if (minute < now.getMinutes()) {
-        return (now.getMinutes() - minute) + '分钟前';
-      } else {
-        return '刚刚';
-      }
-    },
+    formatTime,
     formatTab(value, istop, isgood) {
       if (istop) {
         return '置顶';
-      } 
+      }
       if (isgood) {
         return '精华';
       }
@@ -136,7 +106,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang='scss' scoped>
 @import url('../assets/markdown-github.css');
 
 .articleSec, .replySec{
@@ -228,7 +198,7 @@ export default {
     font-size: 13px;
     color: #999;
   }
-  
+
   .bottom {
     margin-top: 13px;
     line-height: 12px;
@@ -249,7 +219,7 @@ export default {
       display: table;
       content: "";
   }
-  
+
   .clearfix:after {
       clear: both
   }

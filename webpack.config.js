@@ -18,7 +18,12 @@ module.exports = (options = {}) => ({
   module: {
     rules: [{
         test: /\.vue$/,
-        use: ['vue-loader']
+        loader: 'vue-loader',
+        options: {
+          loaders: {
+            scss: 'style-loader!css-loader!sass-loader',
+          }
+        }
       },
       {
         test: /\.js$/,
@@ -27,7 +32,7 @@ module.exports = (options = {}) => ({
       },
 
       {
-        test: /\.css$/,
+        test: /\.(css|scss)$/,
         use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
       },
       /*{
@@ -44,7 +49,7 @@ module.exports = (options = {}) => ({
           }
         }]
       },
-      
+
     ]
   },
   plugins: [
@@ -58,7 +63,8 @@ module.exports = (options = {}) => ({
   resolve: {
     alias: {
       '~': resolve(__dirname, 'src')
-    }
+    },
+    extensions: ['.js', '.vue'],
   },
   devServer: {
     host: '127.0.0.1',
