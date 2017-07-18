@@ -25,10 +25,16 @@ module.exports = (options = {}) => ({
         use: ['babel-loader'],
         exclude: /node_modules/
       },
+
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader', 'postcss-loader']
+        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
       },
+      /*{
+        test: /\.scss$/,
+        loader: 'scss-loader',
+        // loaders: ["style", "css", "sass"]
+      },*/
       {
         test: /\.(png|jpg|jpeg|gif|eot|ttf|woff|woff2|svg|svgz)(\?.+)?$/,
         use: [{
@@ -37,7 +43,8 @@ module.exports = (options = {}) => ({
             limit: 10000
           }
         }]
-      }
+      },
+      
     ]
   },
   plugins: [

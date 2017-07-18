@@ -2,7 +2,7 @@
   <div class="listWrapper">
     <el-row v-for="item in tableData" :key="item.id" class='listItem'>
       <el-col :xs="5" :sm="3" :md="3" :lg="2">
-        <div><img :src='item.author.avatar_url' :title='item.author.loginname' class='authorImg'></div>
+        <div><router-link :to='{name:"UserPage",params:{username:item.author.loginname}}'><img :src='item.author.avatar_url' :title='item.author.loginname' class='authorImg'></router-link></div>
       </el-col>
       <el-col :xs="5" :sm="3" :md="3" :lg="2" class="replyVisitNumber">
         <div><span>{{item.reply_count}}</span><span>/</span><span>{{item.visit_count}}</span></div>
@@ -111,7 +111,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 .listWrapper {
   margin: 20px 10%;
