@@ -1,7 +1,7 @@
 <template>
   <div class="authorSec">
     <el-card :body-style="{ padding: '10px' }">
-      <router-link :to='{name:"UserPage",params:{username:userInfo.loginname}}'>
+      <router-link class="linkUserName" :to='{name:"UserPage",params:{username:userInfo.loginname}}'>
         <div>
           <img :src="userInfo.avatar_url" class="image">
           <div style="padding: 14px;" >
@@ -35,13 +35,13 @@ export default {
       var me = this;
       axios.get('https://cnodejs.org/api/v1/user/' + val, {
         params: {
-          
+
         }
       })
       .then(function (response) {
         console.log(response.data.data);
         me.userInfo = response.data.data;
-        
+
       })
       .catch(function (error) {
         console.log(error);
@@ -55,7 +55,7 @@ export default {
 </script>
 
 <style scoped>
-  
+
   .bottom {
     margin-top: 13px;
     line-height: 12px;
@@ -80,7 +80,7 @@ export default {
     line-height: 25px;
     font-size: 15px;
   }
-  
+
   .linkUserName {
     text-decoration: none;
     color: #888;

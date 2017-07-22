@@ -1,5 +1,5 @@
 <template>
-  <div id="userPage"> 
+  <div id="userPage">
   	<el-row type="flex" class="row-bg" justify="center">
     <el-col :span="16">
       <div class="userSec">
@@ -19,7 +19,12 @@
           </el-col>
           <el-col :xs="12" :sm="14" :md="16" :lg="18">
             <div >
-            <router-link :to='{name:"ArticlePage",params:{id:item.id}}' class='title'>{{item.title}}</router-link>
+            <router-link
+              :to='{name:"ArticlePage",params:{id:item.id}}'
+              class='title'
+            >
+              {{item.title}}
+            </router-link>
             </div>
           </el-col>
           <el-col :xs="7" :sm="6" :md="5" :lg="4" class="lastReplyTime">
@@ -69,7 +74,7 @@ export default {
     var me = this;
       axios.get('https://cnodejs.org/api/v1' + me.$route.fullPath, {
         params: {
-          
+
         }
       })
       .then(function (response) {
@@ -96,7 +101,7 @@ export default {
         hour = +c[0];
         minute = +c[1];
       }
-      
+
       var now = new Date();
 
       if(year < now.getFullYear()){
