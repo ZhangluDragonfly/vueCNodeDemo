@@ -30,7 +30,7 @@
 </template>
 
 <script>
-
+import axios from 'axios'
 export default {
   name: 'navBar',
   data () {
@@ -49,6 +49,18 @@ export default {
     },
     handleIconClick(ev) {
       console.log(ev);
+      var me = this;
+      axios.post('https://cnodejs.org/api/v1/accesstoken', {
+        params: {
+          accesstoken: 'dec6c8e2-d356-4d27-a5f3-dba74bb67cb5'
+        }
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     }
   }
 }

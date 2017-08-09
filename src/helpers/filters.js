@@ -1,20 +1,22 @@
 export const formatTime = (value) => {
-  var year, month, date, hour, minute;
+  let year, month, date, hour, minute;
 
-  var a = value.split('T');
-  var b = a[0].split('-');
-  year = +b[0];
-  month = +b[1];
-  date = +b[2];
+  let a = value.split('T');
+  let b = a[0].split('-');
+  // year = +b[0];
+  // month = +b[1];
+  // date = +b[2];
+  [year, month, date] = b;
 
-  var c;
+  let c;
   if(a[1]) {
     c = a[1].split(':');
-    hour = +c[0];
-    minute = +c[1];
+    // hour = +c[0];
+    // minute = +c[1];
+    [hour, minute,] = c;
   }
 
-  var now = new Date();
+  let now = new Date();
 
   if(year < now.getFullYear()){
     return (now.getFullYear()-year) + '年前' ;
@@ -28,5 +30,19 @@ export const formatTime = (value) => {
     return (now.getMinutes() - minute) + '分钟前';
   } else {
     return '刚刚';
+  }
+}
+
+export const formatTab = (value, istop, isgood) => {
+  if (istop) {
+    return '置顶';
+  }
+  if (isgood) {
+    return '精华';
+  }
+  switch(value) {
+    case 'share': return '分享'; break;
+    case 'ask': return '问答'; break;
+    default : return '其他';
   }
 }

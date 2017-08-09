@@ -47,7 +47,7 @@
 <script>
 import axios from 'axios'
 import userCom from './userCom'
-import {formatTime} from '~/helpers/filters'
+import {formatTime, formatTab} from '~/helpers/filters'
 export default {
   name: 'ArticlePage',
 
@@ -70,8 +70,8 @@ export default {
   components: {userCom},
 
   beforeCreate() {
-    console.log(this.$route);
-    var me = this;
+    // console.log(this.$route);
+    let me = this;
       axios.get('https://cnodejs.org/api/v1' + me.$route.fullPath, {
         params: {
 
@@ -88,19 +88,7 @@ export default {
 
   filters: {
     formatTime,
-    formatTab(value, istop, isgood) {
-      if (istop) {
-        return '置顶';
-      }
-      if (isgood) {
-        return '精华';
-      }
-      switch(value) {
-        case 'share': return '分享'; break;
-        case 'ask': return '问答'; break;
-        default : return '其他';
-      }
-    }
+    formatTab
   },
   methods: {}
 };
