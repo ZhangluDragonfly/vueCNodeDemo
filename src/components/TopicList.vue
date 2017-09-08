@@ -11,8 +11,8 @@
         <div :class="{'tabIsTop': item.top, 'tabIsGood': item.good}" class="tab">{{item.tab | formatTab(item.top, item.good)}}</div>
       </el-col>
       <el-col :xs="9" :sm="11" :md="12" :lg="12">
-        <div>
-        <router-link :to='{name:"ArticlePage",params:{id:item.id}}'>{{item.title}}</router-link>
+        <div class="titleContainer">
+        <router-link :to='{name:"ArticlePage",params:{id:item.id}}' class="title">{{item.title}}</router-link>
         </div>
       </el-col>
       <el-col :xs="5" :sm="5" :md="5" :lg="6" class="createTime">
@@ -109,6 +109,17 @@ export default {
 
 .tabIsGood {
   background-color: #80bd01;
+}
+
+.titleContainer {
+  text-align: left;
+}
+
+.title {
+  text-decoration: none;
+  color: #333;
+  font-size: 15px;
+  text-align: left;
 }
 
 .replyVisitNumber {
