@@ -13,7 +13,7 @@
         </el-input>
       </el-menu-item>
       <el-menu-item index="3" class="navBtn">关于</el-menu-item>
-      <el-menu-item index="2" class="navBtn">登录</el-menu-item>
+      <el-menu-item index="2" class="navBtn"><router-link to='/login'>登录</router-link></el-menu-item>
       <el-menu-item index="1" class="navBtn"><router-link to='/'>首页</router-link></el-menu-item>
     </el-menu>
     <el-dialog
