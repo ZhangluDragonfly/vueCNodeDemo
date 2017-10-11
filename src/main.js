@@ -3,6 +3,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 import 'font-awesome/css/font-awesome.min.css'
 import router from './router'
+import store from './store'
 // import axios from 'axios' // 在这儿引入不是全局的？
 import App from './App.vue'
 
@@ -12,5 +13,6 @@ Vue.use(ElementUI)
 new Vue({
   el: '#app',
   router,
+  store,
   render: h => h(App)
 })

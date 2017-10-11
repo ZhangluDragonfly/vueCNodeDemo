@@ -25,13 +25,19 @@
 <script>
 import axios from 'axios'
 import {formatTime,formatTab} from '~/helpers/filters'
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
   name: 'TopicList',
-  data () {
-    return {
-      tableData: []
-    }
-  },
+  // data () {
+  //   return {
+  //     tableData: []
+  //   }
+  // },
+
+  computed: mapGetters({
+    tableData: 'allTopics'
+  }),
 
   filters: {
     formatTime,
@@ -60,7 +66,12 @@ export default {
 
   mounted () {
     this.$nextTick(() => {
-      this.getTopicList();
+      // this.getTopicList();
+      this.$store.dispatch('getAllTopics', {
+          page: 1,
+          limit: 30,
+          mdrender: false
+        });
     });
   },
 }
