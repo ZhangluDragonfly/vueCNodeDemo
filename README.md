@@ -6,7 +6,7 @@ https://zhangludragonfly.github.io/vueCNodeDemo/
 ## 技术栈
 
  - webpack 2.4.2
- - Vue + vue-loader + vue-router
+ - Vue + vue-loader + vue-router + vuex
  - element-ui
  - axios
  - font-awesome
@@ -16,24 +16,34 @@ https://zhangludragonfly.github.io/vueCNodeDemo/
 ```
   ├── dist
   ├── docs
-  ├── node_modules						# 依赖
-  ├── src
+  ├── node_modules						      # 依赖
+  ├── src                           # 源码目录
+  │   ├── api                         # 模拟前后端交互
+  │   │   ├── topics.js
+  │   │   └── user.js
   │   ├── assets                    	# svg和引入的CSS文件等资源
   │   │   ├── cnodejs.svg
   │   │   └── markdown-github.css
-  │   ├── components                	# 页面组件
+  │   ├── components                	# 公共组件
   │   │   ├── ArticlePage.vue
   │   │   ├── NavBar.vue
   │   │   ├── TopicList.vue
   │   │   ├── UserCom.vue
   │   │   └── UserPage.js
-  │   ├── helpers                       # 工具方法
+  │   ├── helpers                      # 公共方法
   │   │   └── filter.js 
-  │   ├── router                        # 路由管理
+  │   ├── router                       # 路由
   │   │   └── index.js
-  │   ├── App.vue
-  │   ├── index.html
-  │   └── main.js  						# 项目入口
+  │   ├── store                        # 应用级数据（state）
+  │   │   ├── modules                    # 模块
+  │   │   │   ├── topics.js
+  │   │   │   └── user.js
+  │   │   ├── actions.js                 # actions
+  │   │   ├── index.js                   # 状态单一树根
+  │   │   └── mutation-types.js          # mutation类型变量
+  │   ├── App.vue                      # 根组件
+  │   ├── index.html                   # 入口页面
+  │   └── main.js  						         # 入口文件
   ├── .babelrc
   ├── .gitignore
   ├── Makefile

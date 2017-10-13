@@ -12,7 +12,7 @@ Vue.use(ElementUI)
 
 new Vue({
   el: '#app',
-  router,
-  store,
+  router, //通过router配置参数注入路由，从而使整个应用都有路由功能
+  store,  // 同理，注入store
   render: h => h(App)
 })
